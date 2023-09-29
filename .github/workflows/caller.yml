@@ -1,8 +1,7 @@
-name: Reusable Workflow
+name: Reusable Workflow Caller
+
 on:
   push:
-    branches: [ "master" ]
-  workflow_call:
 
 jobs:
   Reusable-caller-job:
