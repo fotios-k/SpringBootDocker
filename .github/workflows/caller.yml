@@ -2,6 +2,7 @@ name: Reusable Workflow
 on:
   push:
     branches: [ "master" ]
+  workflow_call:
 
 jobs:
   Reusable-caller-job:
