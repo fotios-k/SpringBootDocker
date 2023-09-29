@@ -1,8 +1,0 @@
-name: Reusable Workflow
-on:
-  push:
-    branches: [ "master" ]
-
-jobs:
-  Reusable-caller-job:
-    uses: ./.github/workflows/basic-workflow.yml
