@@ -1,3 +1,4 @@
+name: Reusable Workflow
 on:
   push:
     branches: [ "master" ]
