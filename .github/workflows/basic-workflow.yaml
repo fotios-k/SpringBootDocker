@@ -19,21 +19,39 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+        
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - uses: actions/upload-artifact@v3
-      with:
-       name: buildArtifact
-       path: target/*.jar
+
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
         push: true
         context: .
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/planview:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/springBootDocker:latest
+
+    - name: Deploy Application using SSH
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      env:
+        WELCOME: "ssh scp ssh pipelines"
+        LASTSSH: "Doing something after copying"
+      with:
+        host: 'fotioskoutsoukosl0034.simplilearnlabs.com'
+        user: 'fotioskoutsouko'
+        pass: 'tsouko0A@3ykwy'
+        port: 42006
+        connect_timeout: 10s
+        first_ssh: |
+          rm -rf /tmp/Docker
+          mkdir -p /tmp/Docker
+        scp: |
+          'Dockerfile' => /tmp/Docker
+        last_ssh: |
+          docker run -d  -P ${{ secrets.DOCKERHUB_USERNAME }}/springBootDocker:latest
 
