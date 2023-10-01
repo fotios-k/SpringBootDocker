@@ -34,7 +34,7 @@ jobs:
       with:
         push: true
         context: .
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/springBootDocker:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker:latest
 
     - name: Deploy Application using SSH
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
