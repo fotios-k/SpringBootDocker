@@ -53,5 +53,5 @@ jobs:
         scp: |
           'Dockerfile' => /tmp/Docker
         last_ssh: |
-          docker run -d  -P ${{ secrets.DOCKERHUB_USERNAME }}/springBootDocker:latest
+          docker run -d  -P ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker:latest
 
