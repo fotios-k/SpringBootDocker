@@ -2,6 +2,7 @@ name: Caller
 
 on:
   push:
+    branches: [ "master" ]
 
 jobs:
   Reusable-caller-job:
