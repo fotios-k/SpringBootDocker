@@ -5,7 +5,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  Reusable-caller-job:
+  Reusable-workflow:
     uses: ./.github/workflows/basic-workflow.yaml
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
